@@ -1,54 +1,73 @@
-import React from 'react'
-import './Home.css'
-import bgimg from './bg.jpg'
-import front from './front.jpg'
-import Homecards from '../../components/Homecards/Homecards'
-import { events } from '../../config/Event/events'
-
-
-
+import React from 'react';
+import './Home.css';
+import bgimg from './bgimg.jpg';
+import front from './front.jpg';
+import { Link } from 'react-router-dom';
 
 function Home() {
-    return (
-        <>
-            <div className='flex  justify-between'>
-                <div className='mt-24 h-14 bg-gradient-to-r from-cyan-500 to-blue-500 '>
-                    <img src={bgimg} className='w-full h-screen '></img>
+  return (
+    <div className="home-container">
+      {/* Hero Section */}
+      <section className="hero-section" style={{ backgroundImage: `url(${bgimg})` }}>
+        <div className="overlay">
+          <h1>Welcome to Neighbour Net</h1>
+          <p>
+            Transform Your Space into a Sanctuary with Our Curated Home Decor Collection.
+            Elevate Every Room with Unique, Timeless Pieces Crafted to Inspire and Delight.
+          </p>
+          <Link to="/shop" className="primary-button">
+            Shop Now
+          </Link>
+        </div>
+      </section>
 
-                    <div className='bg-white rounded-2xl shadow-black shadow-sm w-48 p-3 mybtn m-10'>
-                        <h6 className='text-gray-950 text-center'>Join the community</h6>
-                    </div>
+      {/* Features Section */}
+      <section className="features-section">
+        <div className="feature-card">
+          <img src={front} alt="Community" />
+          <h3>Join the Community</h3>
+          <p>
+            Become a part of our vibrant community and stay updated with the latest trends and offers.
+          </p>
+          <Link to="/community" className="secondary-button">
+            Learn More
+          </Link>
+        </div>
+        <div className="feature-card">
+          <img src={front} alt="Quality Products" />
+          <h3>Quality Products</h3>
+          <p>
+            Explore our wide range of high-quality home decor products that suit every style and budget.
+          </p>
+          <Link to="/products" className="secondary-button">
+            Explore Products
+          </Link>
+        </div>
+        <div className="feature-card">
+          <img src={front} alt="Exclusive Offers" />
+          <h3>Exclusive Offers</h3>
+          <p>
+            Sign up for our newsletter and get access to exclusive deals and discounts.
+          </p>
+          <Link to="/offers" className="secondary-button">
+            View Offers
+          </Link>
+        </div>
+      </section>
 
-                    <h1 className='text-blue-950 oleo-script-regular heading m-10 font-extrabold'>NEIGHBOUR NET</h1>
-                    <p className='text-blue-950 m-6 font-semibold text  '>Let's unite our strengths, collaborate on ideas, and make a lasting impact in our communities Let's join forces to shape the future of our community, fostering connection, innovation, and growth.
-
-                    </p>
-
-                </div>
-            </div>
-            <div>
-                <img src={front} className='mt-20  h-96 rounded-full object-cover front w-96 shadow-md '>
-                </img>
-            </div>
-           <div className='flex flex-wrap'>
-            {
-                events.map((event,index)=>{
-                    const{name,icon}=event
-                    return(
-                        
-                        <Homecards name={name} icon={icon} index={index}></Homecards>  
-    
-                    )
-                })
-
-                 
-            }
-           </div>
-        </>
-
-
-    )
+      {/* Newsletter Signup */}
+      <section className="newsletter-section">
+        <h2>Stay Updated</h2>
+        <p>Sign up for our newsletter to receive the latest updates and offers.</p>
+        <form className="newsletter-form">
+          <input type="email" placeholder="Enter your email" required />
+          <button type="submit" className="primary-button">
+            Subscribe
+          </button>
+        </form>
+      </section>
+    </div>
+  );
 }
 
-export default Home
-
+export default Home;
